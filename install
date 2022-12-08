@@ -16,6 +16,9 @@ read botname
 sed '5 i discord_url="'"$webhook"'"' ./src/qpush | sed 's/AAA/'"$botname"'/g' > "${bindir}/qpush"
 chmod +x "${bindir}/qpush"
 
+echo 'export PATH="/usr/local/bin/NotifyMe:$PATH"' >> $HOME/.bashrc
+source $HOME/.bashrc
+
 echo "Done"
 
 
