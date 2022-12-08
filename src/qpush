@@ -1,0 +1,16 @@
+#!/bin/bash
+# Quick_push is used to send quick messages onto a discord server.
+# Set the discord_url with your webhook (with quotes)
+# Set the username aka the name of the bot
+
+discord_url="<YOUR_WEBHOOK>"
+MSG="------ $(date) ------\n${1}"
+
+# Preparing the payload
+JSON_PAYLOAD='{"username":"<BOTNAME>","content":"%s"}\n'
+JSON_STR=$(printf "$JSON_PAYLOAD" "$MSG")
+
+# POST request to Discord Webhook
+curl -H "Content-Type: application/json" \
+  -d "${JSON_STR}" \
+  $discord_url
