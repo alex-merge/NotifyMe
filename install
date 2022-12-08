@@ -1,0 +1,21 @@
+#!/bin/bash
+# Installation script for NotifyMe
+
+echo "Installing NotifyMe"
+
+bindir="/usr/local/bin/NotifyMe"
+rm -r $bindir
+mkdir $bindir
+
+echo "Enter the discord webhook URL :"
+read webhook
+echo "Enter the name of the bot :"
+read botname
+
+# Creating quick push script
+sed '5 i discord_url="'"$webhook"'"' ./src/qpush | sed 's/AAA/'"$botname"'/g' > "${bindir}/qpush"
+chmod +x "${bindir}/qpush"
+
+echo "Done"
+
+
