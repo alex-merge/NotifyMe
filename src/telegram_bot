@@ -11,4 +11,4 @@ URL="https://api.telegram.org/botBBB/sendMessage"
 # POST request
 curl -H "Content-Type: application/json" \
   -d "${JSON_STR}" \
-  $URL
+  $URL > /dev/null
