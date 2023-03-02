@@ -6,7 +6,7 @@ MSG="${1}"
 # Preparing payload
 JSON_PAYLOAD='{"chat_id":"AAA","text":"%s"}\n'
 JSON_STR=$(printf "$JSON_PAYLOAD" "$MSG")
-URL="BBB"
+URL="https://api.telegram.org/botBBB/sendMessage"
 
 # POST request
 curl -H "Content-Type: application/json" \
