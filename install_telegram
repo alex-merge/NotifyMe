@@ -1,0 +1,22 @@
+#!/bin/bash
+# Installation script for NotifyMe : Telegram edition
+
+echo "Installing NotifyMe : Telegram edition ..."
+
+bindir="/usr/local/bin/NotifyMe"
+rm -r $bindir
+mkdir $bindir
+
+echo "Enter the chat_id :"
+read chatid
+echo "Enter the bot token :"
+read bottoken
+
+# Creating quick push script
+sed 's/BBB/'"$bottoken"'/g' ./src/telegram_bot | sed 's/AAA/'"$chatid"'/g' > "${bindir}/telegram_msg"
+chmod +x "${bindir}/telegram_msg"
+
+echo 'export PATH="/usr/local/bin/NotifyMe:$PATH"' >> $HOME/.bashrc
+source $HOME/.bashrc
+
+echo "Done"
