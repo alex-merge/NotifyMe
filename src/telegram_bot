@@ -1,0 +1,14 @@
+#!/bin/bash
+
+# Reading message from input
+MSG="${1}"
+
+# Preparing payload
+JSON_PAYLOAD='{"chat_id":"AAA","text":"%s"}\n'
+JSON_STR=$(printf "$JSON_PAYLOAD" "$MSG")
+URL="https://api.telegram.org/bot/sendMessage"
+
+# POST request
+curl -H "Content-Type: application/json" \
+  -d "${JSON_STR}" \
+  $URL
